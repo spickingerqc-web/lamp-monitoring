@@ -11,7 +11,7 @@
 graph LR
     Browser([Web Browser]) -->|HTTP GET| Apache
     Apache[Apache2] -->|실행| PHP[monitor.php]
-    PHP -->|SELECT| MySQL[(MySQL\niot_db)]
+    PHP -->|SELECT| MySQL[(MySQL iot_db)]
     Python[injector.py] -->|INSERT 5sec| MySQL
     PHP -->|HTML| Browser
 
