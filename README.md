@@ -7,18 +7,25 @@
 
 ## 시스템 구성
 
-```
-┌─────────────────────────────────────────────┐
-│         VMware (Host: Windows)              │
-│  ┌──────────────────────────────────────┐   │
-│  │         Ubuntu 24.04 VM              │   │
-│  │                                      │   │
-│  │  injector.py ──INSERT──► MySQL       │   │
-│  │                           │          │   │
-│  │  Browser ──GET──► Apache ─┤          │   │
-│  │                  PHP ◄────┘          │   │
-│  └──────────────────────────────────────┘   │
-└─────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph VMware[VMware Workstation - Host: Windows]
+        subgraph VM[Ubuntu 24.04 VM]
+            subgraph LAMP[LAMP Stack]
+                Apache[Apache2 - Web Server port 80]
+                PHP[PHP 8 - monitor.php]
+                MySQL[MySQL 8 - iot_db.sensor_data]
+                Apache -->|parse .php| PHP
+                PHP -->|SQL SELECT| MySQL
+            end
+            Python[Python 3 - injector.py - 5sec loop]
+            Python -->|SQL INSERT| MySQL
+        end
+    end
+
+    Browser[Web Browser - Host or LAN]
+    Browser -->|HTTP GET /monitor.php| Apache
+    PHP -->|HTML Response| Browser
 ```
 
 ---

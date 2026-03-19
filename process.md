@@ -12,23 +12,23 @@ PHP(`monitor.php`)를 통해 웹 브라우저에서 실시간으로 데이터를
 
 ```mermaid
 graph TD
-    subgraph VMware["VMware Workstation (Host: Windows)"]
-        subgraph VM["Ubuntu 24.04 VM"]
-            subgraph LAMP["LAMP Stack"]
-                Apache["Apache2\n(Web Server :80)"]
-                PHP["PHP 8\n(monitor.php)"]
-                MySQL["MySQL 8\n(iot_db.sensor_data)"]
-                Apache -->|"parse .php"| PHP
-                PHP -->|"SQL SELECT"| MySQL
+    subgraph VMware[VMware Workstation - Host: Windows]
+        subgraph VM[Ubuntu 24.04 VM]
+            subgraph LAMP[LAMP Stack]
+                Apache[Apache2 - Web Server port 80]
+                PHP[PHP 8 - monitor.php]
+                MySQL[MySQL 8 - iot_db.sensor_data]
+                Apache -->|parse .php| PHP
+                PHP -->|SQL SELECT| MySQL
             end
-            Python["Python 3\ninjector.py\n(cron / 5 sec loop)"]
-            Python -->|"SQL INSERT"| MySQL
+            Python[Python 3 - injector.py - 5sec loop]
+            Python -->|SQL INSERT| MySQL
         end
     end
 
-    Browser["Web Browser\n(Host or LAN)"]
-    Browser -->|"HTTP GET /monitor.php"| Apache
-    PHP -->|"HTML Response"| Browser
+    Browser[Web Browser - Host or LAN]
+    Browser -->|HTTP GET /monitor.php| Apache
+    PHP -->|HTML Response| Browser
 
     style VMware fill:#e8f4f8,stroke:#2980b9
     style VM fill:#d5e8d4,stroke:#27ae60
