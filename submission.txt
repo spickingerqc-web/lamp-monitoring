@@ -1,0 +1,13 @@
+# Submission Information — Week 3 Capstone Design
+
+## 동작 영상 URL
+(영상을 촬영 후 YouTube 또는 Google Drive 링크를 여기에 입력하세요)
+URL:
+
+## GitHub Repository
+(push 완료 후 repo 이름/URL을 여기에 입력하세요)
+Repo Name :
+Repo URL  : https://github.com/<YOUR_USERNAME>/<REPO_NAME>
+
+## 제출일
+2026-03-19
