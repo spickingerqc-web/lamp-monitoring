@@ -8,24 +8,16 @@
 ## 시스템 구성
 
 ```mermaid
-graph TD
-    subgraph VMware[VMware Workstation - Host: Windows]
-        subgraph VM[Ubuntu 24.04 VM]
-            subgraph LAMP[LAMP Stack]
-                Apache[Apache2 - Web Server port 80]
-                PHP[PHP 8 - monitor.php]
-                MySQL[MySQL 8 - iot_db.sensor_data]
-                Apache -->|parse .php| PHP
-                PHP -->|SQL SELECT| MySQL
-            end
-            Python[Python 3 - injector.py - 5sec loop]
-            Python -->|SQL INSERT| MySQL
-        end
-    end
+graph LR
+    Browser([Web Browser]) -->|HTTP GET| Apache
+    Apache[Apache2] -->|실행| PHP[monitor.php]
+    PHP -->|SELECT| MySQL[(MySQL\niot_db)]
+    Python[injector.py] -->|INSERT 5sec| MySQL
+    PHP -->|HTML| Browser
 
-    Browser[Web Browser - Host or LAN]
-    Browser -->|HTTP GET /monitor.php| Apache
-    PHP -->|HTML Response| Browser
+    style Browser fill:#e2e3e5
+    style Python fill:#f8d7da
+    style MySQL fill:#fff3cd
 ```
 
 ---
