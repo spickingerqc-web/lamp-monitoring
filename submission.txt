@@ -1,8 +1,8 @@
 # Submission Information — Week 3 Capstone Design
 
 ## 동작 영상 URL
-(영상 업로드 후 링크 입력 예정)
-URL:
+GitHub repo 내 동작 영상 파일: 2101080정진용.webm
+URL: https://github.com/spickingerqc-web/lamp-monitoring/blob/main/2101080%EC%A0%95%EC%A7%84%EC%9A%A9.webm
 
 ## GitHub Repository
 Repo Name : lamp-monitoring
